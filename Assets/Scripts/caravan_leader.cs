@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events; // Needed for UnityEvent
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class CaravanLeaderPath : MonoBehaviour
@@ -9,25 +10,35 @@ public class CaravanLeaderPath : MonoBehaviour
     private int currentWaypointIndex = 0;
 
     [Header("Speed Settings")]
-    public float walkSpeed = 1.0f; // Very slow, march pace
+    public float walkSpeed = 1.0f;
+
+    [Header("Events")]
+    public int stormTriggerWaypointIndex = 2; // Waypoint 3 is index 2 (0, 1, 2)
+    public UnityEvent OnSandstormStart;
 
     private NavMeshAgent agent;
+    private bool stormTriggered = false;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = walkSpeed;
 
-        // Start marching toward the first waypoint
         SetNextDestination();
     }
 
     void Update()
     {
-        // Check if the leader has reached the current waypoint
         if (!agent.pathPending && agent.remainingDistance < 1.5f)
         {
-            // Move to the next waypoint in the list
+            // Check if we arrived at Waypoint 3 (index 2)
+            if (currentWaypointIndex == stormTriggerWaypointIndex && !stormTriggered)
+            {
+                stormTriggered = true;
+                OnSandstormStart?.Invoke(); // Fire the sandstorm event!
+            }
+
+            // Move to next waypoint (or stop)
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
             SetNextDestination();
         }
