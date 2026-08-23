@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "DesertBound_SGS_Project.slnx",
+    "dotnet.defaultSolution": "DesertBound (SGS Project).slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }

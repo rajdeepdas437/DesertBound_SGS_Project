@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86fa90be275f45428bbb88ec58ace46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DesertGenerator
-  width: 100
-  depth: 100
+  width: 500
+  depth: 500
   scale: 15
   heightMultiplier: 5
   seed: 3490332
@@ -119,3 +119,5 @@ MonoBehaviour:
   propCount: 60
   minScale: 0.8
   maxScale: 1.4
+  maxSlopeAngle: 45
+  edgeBuffer: 5

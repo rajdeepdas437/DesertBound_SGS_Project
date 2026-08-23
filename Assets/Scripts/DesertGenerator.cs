@@ -3,11 +3,16 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class DesertGenerator : MonoBehaviour
 {
+
+    [Header("World Size")]
+    [SerializeField] float cellsize = 2f;
+
+    
     [Header("Terrain Dimensions")]
-    public int width = 100;
-    public int depth = 100;
-    public float scale = 15f;
-    public float heightMultiplier = 4f;
+    public int width;
+    public int depth;
+    public float scale;
+    public float heightMultiplier ;
 
     [Header("Randomization")]
     public float seed;
@@ -42,64 +47,80 @@ public class DesertGenerator : MonoBehaviour
     {
         mesh = new Mesh();
         mesh.name = "LowPolyDesertMesh";
+
         GetComponent<MeshFilter>().mesh = mesh;
 
-        // Generate flat-shaded low-poly triangles
-        int numTriangles = (width - 1) * (depth - 1) * 2;
-        Vector3[] vertices = new Vector3[numTriangles * 3];
-        int[] triangles = new int[numTriangles * 3];
+        int vertexCount = width * depth;
 
-        int vertIdx = 0;
+        Vector3[] vertices = new Vector3[vertexCount];
+        int[] triangles = new int[(width - 1) * (depth - 1) * 6];
+
+        // Generate vertices
+        for (int x = 0; x < width; x++)
+        {
+            for (int z = 0; z < depth; z++)
+            {
+                int index = x * depth + z;
+
+                vertices[index] = GetPoint(x, z);
+            }
+        }
+
+        // Generate triangles
+        int triangleIndex = 0;
 
         for (int x = 0; x < width - 1; x++)
         {
             for (int z = 0; z < depth - 1; z++)
             {
-                // Corners of grid square centered around (0,0)
-                Vector3 p0 = GetPoint(x, z);
-                Vector3 p1 = GetPoint(x, z + 1);
-                Vector3 p2 = GetPoint(x + 1, z);
-                Vector3 p3 = GetPoint(x + 1, z + 1);
+                int current = x * depth + z;
+                int nextX = (x + 1) * depth + z;
+                int nextZ = x * depth + (z + 1);
+                int nextXZ = (x + 1) * depth + (z + 1);
 
                 // Triangle 1
-                vertices[vertIdx] = p0;
-                vertices[vertIdx + 1] = p1;
-                vertices[vertIdx + 2] = p2;
+                triangles[triangleIndex++] = current;
+                triangles[triangleIndex++] = nextZ;
+                triangles[triangleIndex++] = nextX;
 
                 // Triangle 2
-                vertices[vertIdx + 3] = p2;
-                vertices[vertIdx + 4] = p1;
-                vertices[vertIdx + 5] = p3;
-
-                for (int i = 0; i < 6; i++)
-                {
-                    triangles[vertIdx + i] = vertIdx + i;
-                }
-
-                vertIdx += 6;
+                triangles[triangleIndex++] = nextX;
+                triangles[triangleIndex++] = nextZ;
+                triangles[triangleIndex++] = nextXZ;
             }
         }
 
         mesh.vertices = vertices;
         mesh.triangles = triangles;
-        mesh.RecalculateNormals();
 
-        // Ensure MeshCollider is updated so raycasts detect ground accurately
+        mesh.RecalculateNormals();
+        mesh.RecalculateBounds();
+
+        // Update collider
         MeshCollider collider = GetComponent<MeshCollider>();
-        if (collider == null) collider = gameObject.AddComponent<MeshCollider>();
+
+        if (collider == null)
+            collider = gameObject.AddComponent<MeshCollider>();
+
+        collider.sharedMesh = null;
         collider.sharedMesh = mesh;
     }
 
     Vector3 GetPoint(int x, int z)
     {
-        // Calculate height using Perlin noise
-        float y = Mathf.PerlinNoise((x + seed) / scale, (z + seed) / scale) * heightMultiplier;
-        
-        // Offset coordinates by half width and depth to center the mesh at (0,0)
-        float centeredX = x - (width / 2f);
-        float centeredZ = z - (depth / 2f);
+        float y = Mathf.PerlinNoise(
+            (x + seed) / scale,
+            (z + seed) / scale
+        ) * heightMultiplier;
 
-        return new Vector3(centeredX, y, centeredZ);
+        float xPos = x - (width - 1) / 2f;
+        float zPos = z - (depth - 1) / 2f;
+
+        return new Vector3(
+            xPos,
+            y,
+            zPos
+        );
     }
 
     void SpawnProps()
