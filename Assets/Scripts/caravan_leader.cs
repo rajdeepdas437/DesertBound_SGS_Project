@@ -19,6 +19,8 @@ public class CaravanLeaderPath : MonoBehaviour
     private NavMeshAgent agent;
     private bool stormTriggered = false;
 
+    private bool playerInRange=false;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -29,7 +31,10 @@ public class CaravanLeaderPath : MonoBehaviour
 
     void Update()
     {
-        if (!agent.pathPending && agent.remainingDistance < 1.5f)
+
+        Debug.Log($"player in range : {playerInRange}");
+
+        if (!agent.pathPending && agent.remainingDistance < 1.5f && playerInRange)   //add a player in range condition
         {
             // Check if we arrived at Waypoint 3 (index 2)
             if (currentWaypointIndex == stormTriggerWaypointIndex && !stormTriggered)
@@ -41,6 +46,7 @@ public class CaravanLeaderPath : MonoBehaviour
             // Move to next waypoint (or stop)
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
             SetNextDestination();
+            
         }
     }
 
@@ -49,6 +55,22 @@ public class CaravanLeaderPath : MonoBehaviour
         if (waypoints.Length > 0 && waypoints[currentWaypointIndex] != null)
         {
             agent.SetDestination(waypoints[currentWaypointIndex].position);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            playerInRange = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            playerInRange = false;
         }
     }
 }
