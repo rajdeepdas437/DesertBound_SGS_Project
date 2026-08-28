@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerStatusSystem : MonoBehaviour
@@ -28,16 +29,14 @@ public class PlayerStatusSystem : MonoBehaviour
     [Header("Health Drain Penalties (Per Second)")]
     public float zeroWaterHealthDrain = 1.5f;
     public float zeroHungerHealthDrain = 0.5f;
-
+    public TextMeshProUGUI uivalues;
     private const float MAX_STAT = 100f;
 
     void Update()
     {
-        // Example: Track how much stamina is recovered this frame.
-        // Replace this float with your action/stamina controller logic later.
-        float staminaRecoveredThisFrame = 0f; 
-
-        TickStatusSystem(Time.deltaTime, staminaRecoveredThisFrame);
+        (float health, float hunger, float water) = GetStatusValues();
+        uivalues.text = $"{(int)health}\n{(int)stamina}\n{(int)water}\n{(int)hunger}";
+        
     }
 
     /// <summary>
@@ -60,7 +59,6 @@ public class PlayerStatusSystem : MonoBehaviour
         // 4. Apply Depletions & Clamp Values [0, 100]
         water = Mathf.Clamp(water - (waterDrain + waterStaminaCost), 0f, MAX_STAT);
         hunger = Mathf.Clamp(hunger - (hungerDrain + hungerStaminaCost), 0f, MAX_STAT);
-        stamina = Mathf.Clamp(stamina, 0f, MAX_STAT);
 
         // 5. Health Drain Logic for Depleted Reserves
         float totalHealthDrain = 0f;
@@ -81,13 +79,12 @@ public class PlayerStatusSystem : MonoBehaviour
     /// <summary>
     /// Helper method to fetch final values cleanly.
     /// </summary>
-    public (float health, float hunger, float water, float stamina) GetStatusValues()
+    public (float health, float hunger, float water) GetStatusValues()
     {
         return (
             Mathf.Round(health * 100f) / 100f,
             Mathf.Round(hunger * 100f) / 100f,
-            Mathf.Round(water * 100f) / 100f,
-            Mathf.Round(stamina * 100f) / 100f
+            Mathf.Round(water * 100f) / 100f
         );
     }
 }

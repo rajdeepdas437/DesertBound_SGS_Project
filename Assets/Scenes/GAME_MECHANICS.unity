@@ -191,6 +191,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129139970}
   m_CullTransparentMesh: 1
+--- !u!4 &188810861 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 629888926814840135, guid: b400c09fbe85afd49afbe36c5e5350b4, type: 3}
+  m_PrefabInstance: {fileID: 2019093919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &217875089
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +296,7 @@ RectTransform:
   - {fileID: 275396140}
   - {fileID: 129139971}
   - {fileID: 1453186248}
+  - {fileID: 228327351}
   m_Father: {fileID: 624727150}
   m_LocalEulerAnglesHint: {x: -22.53, y: -394, z: -352}
   m_AnchorMin: {x: 0, y: 0}
@@ -298,6 +304,72 @@ RectTransform:
   m_AnchoredPosition: {x: -1.19, y: 1.7}
   m_SizeDelta: {x: 1640, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &228327350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 228327351}
+  - component: {fileID: 228327352}
+  m_Layer: 5
+  m_Name: stamina_manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &228327351
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228327350}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 217875094}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &228327352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228327350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa0e90cf1385cc041870ef03eb55b1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  statusSystem: {fileID: 0}
+  rootPlayer: {fileID: 233386407}
+  headCamera: {fileID: 304902036}
+  leftController: {fileID: 1109098177}
+  rightController: {fileID: 188810861}
+  walkThreshold: 1.2
+  sprintThreshold: 3.5
+  handExertionThreshold: 1.5
+  maxStamina: 100
+  baseSprintDrain: 15
+  heavySwingDrain: 10
+  regenRate: 20
+  regenDelay: 1.5
+--- !u!4 &233386407 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4295613525519174831, guid: b400c09fbe85afd49afbe36c5e5350b4, type: 3}
+  m_PrefabInstance: {fileID: 2019093919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &240750514
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,6 +983,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1109098177 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 629888927482795176, guid: b400c09fbe85afd49afbe36c5e5350b4, type: 3}
+  m_PrefabInstance: {fileID: 2019093919}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1225902350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,6 +1497,7 @@ MonoBehaviour:
   nightWaterCostMultiplier: 0.8
   zeroWaterHealthDrain: 1.5
   zeroHungerHealthDrain: 0.5
+  uivalues: {fileID: 1270524916}
 --- !u!1 &1478020824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9121935054763680090, guid: 36be42a7cdcbdba419eafd879a886bd4, type: 3}
