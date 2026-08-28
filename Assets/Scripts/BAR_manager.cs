@@ -30,10 +30,13 @@ public class PlayerStatusSystem : MonoBehaviour
     public float zeroWaterHealthDrain = 1.5f;
     public float zeroHungerHealthDrain = 0.5f;
     public TextMeshProUGUI uivalues;
+    public VRStaminaManager staminaval;
     private const float MAX_STAT = 100f;
 
     void Update()
     {
+
+        stamina = staminaval.get_stamina();
         (float health, float hunger, float water) = GetStatusValues();
         uivalues.text = $"{(int)health}\n{(int)stamina}\n{(int)water}\n{(int)hunger}";
         

@@ -1498,6 +1498,7 @@ MonoBehaviour:
   zeroWaterHealthDrain: 1.5
   zeroHungerHealthDrain: 0.5
   uivalues: {fileID: 1270524916}
+  staminaval: {fileID: 228327352}
 --- !u!1 &1478020824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9121935054763680090, guid: 36be42a7cdcbdba419eafd879a886bd4, type: 3}
