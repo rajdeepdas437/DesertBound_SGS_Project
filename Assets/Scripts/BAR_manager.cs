@@ -35,8 +35,6 @@ public class PlayerStatusSystem : MonoBehaviour
 
     void Update()
     {
-
-        stamina = staminaval.get_stamina();
         (float health, float hunger, float water) = GetStatusValues();
         uivalues.text = $"{(int)health}\n{(int)stamina}\n{(int)water}\n{(int)hunger}";
         

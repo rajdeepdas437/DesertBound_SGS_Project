@@ -191,11 +191,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129139970}
   m_CullTransparentMesh: 1
---- !u!4 &188810861 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 629888926814840135, guid: b400c09fbe85afd49afbe36c5e5350b4, type: 3}
-  m_PrefabInstance: {fileID: 2019093919}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &217875089
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,19 +347,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0e90cf1385cc041870ef03eb55b1f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  statusSystem: {fileID: 0}
-  rootPlayer: {fileID: 233386407}
-  headCamera: {fileID: 304902036}
-  leftController: {fileID: 1109098177}
-  rightController: {fileID: 188810861}
-  walkThreshold: 1.2
-  sprintThreshold: 3.5
-  handExertionThreshold: 1.5
+  statusSystem: {fileID: 1453186249}
+  autoHandPlayer: {fileID: 233386407}
+  sprintSpeedThreshold: 6
+  sprintDrainRate: 100
   maxStamina: 100
-  baseSprintDrain: 15
-  heavySwingDrain: 10
-  regenRate: 20
-  regenDelay: 1.5
+  regenRate: 10
+  regenDelay: 0.5
 --- !u!4 &233386407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4295613525519174831, guid: b400c09fbe85afd49afbe36c5e5350b4, type: 3}
@@ -983,11 +972,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1109098177 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 629888927482795176, guid: b400c09fbe85afd49afbe36c5e5350b4, type: 3}
-  m_PrefabInstance: {fileID: 2019093919}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1225902350
 GameObject:
   m_ObjectHideFlags: 0
