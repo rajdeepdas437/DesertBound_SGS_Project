@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class ExtraPlayerControls : MonoBehaviour
 {
     private Rigidbody rb;
+    public VRStaminaManager staminabar;
     [SerializeField] float jumpForce = 5f;
     
     void Start()
@@ -19,9 +20,9 @@ public class ExtraPlayerControls : MonoBehaviour
         Run();
     }
 
-    private static void Run()
+    private void Run()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && staminabar.currentStamina > 5f)
         {
             AutoHandPlayer.Instance.maxMoveSpeed = 5f;
         }
@@ -33,9 +34,10 @@ public class ExtraPlayerControls : MonoBehaviour
 
     private void JumpTrigger()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && staminabar.currentStamina > 7f)
         {
             AutoHandPlayer.Instance.Jump(jumpForce);
+            staminabar.currentStamina -=7f;
         }
     }
 }

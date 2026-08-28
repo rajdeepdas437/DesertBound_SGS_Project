@@ -23,7 +23,7 @@ public class VRStaminaManager : MonoBehaviour
     // Internal tracking values
     private Vector3 prevPlayerPos;
     private float lastSprintTime;
-    private float currentStamina;
+    public float currentStamina;
 
     void Start()
     {
