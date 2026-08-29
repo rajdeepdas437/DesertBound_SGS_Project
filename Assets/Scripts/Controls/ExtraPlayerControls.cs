@@ -6,7 +6,10 @@ public class ExtraPlayerControls : MonoBehaviour
 {
     private Rigidbody rb;
     public VRStaminaManager staminabar;
-    [SerializeField] float jumpForce = 5f;
+    public float jumpForce = 5f;
+    public float allowable_speed_sprint;
+    public float allowable_speed_walk;
+    
     
     void Start()
     {
