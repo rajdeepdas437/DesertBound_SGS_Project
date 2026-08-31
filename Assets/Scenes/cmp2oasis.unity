@@ -217,8 +217,8 @@ Transform:
   m_GameObject: {fileID: 107943562}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.27}
-  m_LocalScale: {x: 0.22, y: 1, z: 0.22}
+  m_LocalPosition: {x: 0, y: 0.24, z: 0}
+  m_LocalScale: {x: 0.07969025, y: 1, z: 0.073883146}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1574240511}
@@ -314,10 +314,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3775d00b9286e8a49916e557da561c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapSurfaceDrawing
-  targetRenderer: {fileID: 751088020}
-  baseMapTexture: {fileID: 2800000, guid: e08bc1f447bf30845b86b709a029def5, type: 3}
+  targetRenderer: {fileID: 107943565}
+  baseMapTexture: {fileID: 2800000, guid: f5aad1486df3c6b42b8be9f7869fa653, type: 3}
   blankCanvasSize: 512
-  blankCanvasColor: {r: 0.85, g: 0.75, b: 0.55, a: 1}
+  blankCanvasColor: {r: 0.7725491, g: 0.69803923, b: 0.5372549, a: 1}
   drawColor: {r: 0.85, g: 0.2, b: 0.15, a: 1}
   brushSize: 4
   allowMouseTesting: 1
@@ -763,7 +763,6 @@ GameObject:
   - component: {fileID: 751088017}
   - component: {fileID: 751088021}
   - component: {fileID: 751088020}
-  - component: {fileID: 751088019}
   - component: {fileID: 751088018}
   m_Layer: 0
   m_Name: ClosedVisual
@@ -781,8 +780,8 @@ Transform:
   m_GameObject: {fileID: 751088016}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.02, y: 0.32, z: -0.29}
-  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0.24, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.404165, z: 0.088333}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1574240511}
@@ -810,27 +809,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &751088019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751088016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3775d00b9286e8a49916e557da561c58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapSurfaceDrawing
-  targetRenderer: {fileID: 751088020}
-  baseMapTexture: {fileID: 0}
-  blankCanvasSize: 512
-  blankCanvasColor: {r: 0.85, g: 0.75, b: 0.55, a: 1}
-  drawColor: {r: 0.85, g: 0.2, b: 0.15, a: 1}
-  brushSize: 4
-  allowMouseTesting: 1
-  pcTestCamera: {fileID: 0}
-  maxMouseRayDistance: 10
 --- !u!23 &751088020
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1523,7 +1501,7 @@ GameObject:
   - component: {fileID: 1574240512}
   - component: {fileID: 1574240509}
   - component: {fileID: 1574240514}
-  - component: {fileID: 1574240513}
+  - component: {fileID: 1574240515}
   m_Layer: 0
   m_Name: MapRoot
   m_TagString: Untagged
@@ -1633,7 +1611,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.42, y: 2.99476, z: 34.12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.74167, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 751088017}
@@ -1656,29 +1634,6 @@ MonoBehaviour:
   openVisual: {fileID: 107943562}
   toggleHandNode: 4
   pcTestToggleKey: 111
---- !u!136 &1574240513
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1574240508}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.943663
-  m_Height: 1.9334174
-  m_Direction: 1
-  m_Center: {x: -0.063379645, y: 0.000000059604645, z: -0.3}
 --- !u!114 &1574240514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1726,6 +1681,27 @@ MonoBehaviour:
   minRange: 0
   testAngle: 0
   testRange: 0
+--- !u!65 &1574240515
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574240508}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0.24, z: 0}
 --- !u!1 &1583270345 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8085421289435345812, guid: b400c09fbe85afd49afbe36c5e5350b4, type: 3}

@@ -27,7 +27,7 @@ public class HandDrawTool : MonoBehaviour
 
     [Header("PC Test Fallback")]
     public bool allowPcKeyTesting = true;
-    public KeyCode pcTestDrawKey = KeyCode.Space; // separate from the simulator's grab key (Mouse0)
+    public KeyCode pcTestDrawKey = KeyCode.LeftAlt; // Space is already bound to Jump in ExtraPlayerControls.cs
 
     void Update()
     {

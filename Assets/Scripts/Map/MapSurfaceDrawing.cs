@@ -85,6 +85,13 @@ public class MapSurfaceDrawing : MonoBehaviour
             runtimeMaterial.mainTexture = drawableTexture;
             if (runtimeMaterial.HasProperty("_BaseMap"))
                 runtimeMaterial.SetTexture("_BaseMap", drawableTexture);
+
+            // Force the tint swatch to pure white so the material's default color never darkens/greys
+            // out the texture underneath it - a grey or colored tint here multiplies with every pixel.
+            if (runtimeMaterial.HasProperty("_BaseColor"))
+                runtimeMaterial.SetColor("_BaseColor", Color.white);
+            if (runtimeMaterial.HasProperty("_Color"))
+                runtimeMaterial.SetColor("_Color", Color.white);
         }
         else
         {
