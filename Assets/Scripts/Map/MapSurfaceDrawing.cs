@@ -78,7 +78,13 @@ public class MapSurfaceDrawing : MonoBehaviour
             // .material (not sharedMaterial) instantiates a per-object copy so we don't
             // overwrite the original asset or paint on every object sharing that material.
             runtimeMaterial = targetRenderer.material;
+
+            // Built-in Standard shader reads "_MainTex" (aliased by .mainTexture).
+            // URP/HDRP Lit shaders read "_BaseMap" instead - mainTexture alone won't show there.
+            // Setting whichever properties exist covers both pipelines without needing to know which is active.
             runtimeMaterial.mainTexture = drawableTexture;
+            if (runtimeMaterial.HasProperty("_BaseMap"))
+                runtimeMaterial.SetTexture("_BaseMap", drawableTexture);
         }
         else
         {
