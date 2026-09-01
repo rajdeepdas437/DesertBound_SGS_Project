@@ -84,7 +84,7 @@ public class AutoHandPlayerControllerInputSimulator : MonoBehaviour
     [ShowIf("ignoreMe2")]
     public KeyCode resetHandKeyCode = KeyCode.R;
     [ShowIf("ignoreMe2")]
-    public KeyCode mouseLookKeyCode = KeyCode.Mouse1;
+    public KeyCode mouseLookKeyCode = KeyCode.Mouse1;  
     [ShowIf("ignoreMe2")]
     [EnableIf("cursorLock")]
     public KeyCode escapeFPSKeyCode = KeyCode.Escape;
@@ -103,6 +103,8 @@ public class AutoHandPlayerControllerInputSimulator : MonoBehaviour
     private Vector2 movementInputs = Vector2.zero;
     private Vector2 mouseDeltaPosition = Vector2.zero;
     private Vector2 mouseScrollDelta = Vector2.zero;
+    [SerializeField] HandCanvasPointer leftUIPointer;
+    [SerializeField] HandCanvasPointer rightUIPointer;
 
     private void Start()
     {
@@ -383,48 +385,62 @@ public class AutoHandPlayerControllerInputSimulator : MonoBehaviour
     }
 
     void HandleHandControl(Move move)
+{
+    var handPoser = move == Move.leftHand ? leftPoser : rightPoser;
+
+    var zDelta = (mouseScrollDelta / 50f).y * ScrollHandSpeed;
+    var xyDelta = mouseDeltaPosition * 3f;
+
+    var toMove = new Vector3(xyDelta.x, xyDelta.y, zDelta) * handMovementSpeed;
+
+    handPoser.transform.position += handPoser.transform.TransformDirection(toMove);
+
+    // Get the UI pointer for the hand being controlled
+    var uiPointer = move == Move.leftHand ? leftUIPointer : rightUIPointer;
+
+    // Mouse button pressed
+    if (mouseGrabKey)
     {
-        var handPoser = move == Move.leftHand ? leftPoser : rightPoser;
+        uiPointer.Press();
+    }
 
-        var zDelta = (mouseScrollDelta / 50f).y * ScrollHandSpeed;
-        var xyDelta = mouseDeltaPosition * 3f;
-        
-        var toMove = new Vector3(xyDelta.x, xyDelta.y, zDelta) * handMovementSpeed;
+    // Mouse button released
+    if (Input.GetKeyUp(mouseGrabKeyCode))
+    {
+        uiPointer.Release();
+    }
 
-        handPoser.transform.position += handPoser.transform.TransformDirection(toMove);
+    // Existing Auto Hand grabbing
+    if (!mouseGrabKey)
+        return;
 
-        if (!mouseGrabKey)
-            return;
-
-        if (move == Move.leftHand)
+    if (move == Move.leftHand)
+    {
+        if (player.handLeft.GetHeldGrabbable() != null)
         {
-            if (player.handLeft.GetHeldGrabbable() != null)
-            {
-                player.handLeft.Release();
-                releaseEvent.Invoke(player.handLeft);
-            }
-            else
-            {
-                player.handLeft.Grab();
-                grabEvent.Invoke(player.handLeft);
-            }
-
+            player.handLeft.Release();
+            releaseEvent.Invoke(player.handLeft);
         }
-        else if (move == Move.rightHand)
+        else
         {
-            if (player.handRight.GetHeldGrabbable() != null)
-            {
-                player.handRight.Release();
-                releaseEvent.Invoke(player.handRight);
-            }
-            else
-            {
-                player.handRight.Grab();
-                grabEvent.Invoke(player.handRight);
-            }
-
+            player.handLeft.Grab();
+            grabEvent.Invoke(player.handLeft);
         }
     }
+    else if (move == Move.rightHand)
+    {
+        if (player.handRight.GetHeldGrabbable() != null)
+        {
+            player.handRight.Release();
+            releaseEvent.Invoke(player.handRight);
+        }
+        else
+        {
+            player.handRight.Grab();
+            grabEvent.Invoke(player.handRight);
+        }
+    }
+}
 
     private Vector2 GetMouseScreenDeltaPosition()
     {
