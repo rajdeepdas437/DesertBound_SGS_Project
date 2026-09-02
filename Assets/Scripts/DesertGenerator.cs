@@ -109,8 +109,8 @@ public class DesertGenerator : MonoBehaviour
     Vector3 GetPoint(int x, int z)
     {
         float y = Mathf.PerlinNoise(
-            (x + seed) / scale,
-            (z + seed) / scale
+        (x + seed) / scale,
+        (z + seed) / scale
         ) * heightMultiplier;
 
         float xPos = x - (width - 1) / 2f;
