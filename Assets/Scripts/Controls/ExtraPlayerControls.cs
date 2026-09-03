@@ -9,8 +9,8 @@ public class ExtraPlayerControls : MonoBehaviour
     public float jumpForce = 5f;
     public float allowable_speed_sprint;
     public float allowable_speed_walk;
-    
-    
+    public InputActionReference jumper;
+    public InputActionReference sprinter;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,7 +25,13 @@ public class ExtraPlayerControls : MonoBehaviour
 
     private void Run()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && staminabar.currentStamina > 5f)
+        bool legacyShift = Input.GetKey(KeyCode.LeftShift);
+        bool newAction = sprinter.action.IsPressed();
+
+        if (legacyShift || newAction) {
+        // Sprint logic
+        }   
+        if ((legacyShift || newAction) && staminabar.currentStamina > 5f)
         {
             AutoHandPlayer.Instance.maxMoveSpeed = 5f;
         }
@@ -37,7 +43,9 @@ public class ExtraPlayerControls : MonoBehaviour
 
     private void JumpTrigger()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && staminabar.currentStamina > 7f)
+        bool legacybar  = (Input.GetKeyDown(KeyCode.Space));
+        bool newbar = jumper.action.IsPressed();
+        if ( (legacybar || newbar) && staminabar.currentStamina > 7f)
         {
             AutoHandPlayer.Instance.Jump(jumpForce);
             staminabar.currentStamina -=7f;
