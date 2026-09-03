@@ -68,30 +68,31 @@ public class SunController : MonoBehaviour
 
     private void UpdateSun()
     {
-        // Create East and West positions
-        UnityEngine.Vector3 eastSunOffset = new UnityEngine.Vector3(
-            eastSunx,
+        // Calculate the angles of the East and West positions.
+        float eastAngle = Mathf.Atan2(
             Mathf.Sqrt(sunDistance * sunDistance - eastSunx * eastSunx),
-            0f
+            eastSunx
         );
 
-        UnityEngine.Vector3 westSunOffset = new UnityEngine.Vector3(
-            westSunx,
+        float westAngle = Mathf.Atan2(
             Mathf.Sqrt(sunDistance * sunDistance - westSunx * westSunx),
-            0f
+            westSunx
         );
 
-        // Move between East and West
-        UnityEngine.Vector3 sunOffset = UnityEngine.Vector3.Lerp(
-            eastSunOffset,
-            westSunOffset,
+        // Linearly interpolate the ANGLE, not X/Y.
+        float currentAngle = Mathf.Lerp(
+            eastAngle,
+            westAngle,
             maxProgress
         );
 
-        // Force the distance from player to remain constant
-        sunOffset = sunOffset.normalized * sunDistance;
+        // Convert angle back into X/Y coordinates.
+        float x = Mathf.Cos(currentAngle) * sunDistance;
+        float y = Mathf.Sin(currentAngle) * sunDistance;
 
-        // Position relative to player
+        UnityEngine.Vector3 sunOffset = new UnityEngine.Vector3(x, y, 0f);
+
+        // Position relative to player.
         sunSphere.position = player.position + sunOffset;
     }
 }

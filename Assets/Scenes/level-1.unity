@@ -2864,11 +2864,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd774ee686f51544a519b83beec1f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  player: {fileID: 551059525}
+  player: {fileID: 458073147}
   levelStart: {fileID: 1853130294}
   levelEnd: {fileID: 1980704334}
   eastSunx: 500
-  westSunx: -500
+  westSunx: 0
   sunDistance: 509.9
   sunSphere: {fileID: 1781978908}
 --- !u!4 &2075888391
