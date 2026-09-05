@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events; // Needed for UnityEvent
-
+using UnityEngine.SceneManagement;
+using System.Collections;
 [RequireComponent(typeof(NavMeshAgent))]
 public class CaravanLeaderPath : MonoBehaviour
 {
@@ -42,26 +43,33 @@ public class CaravanLeaderPath : MonoBehaviour
 
     /// <summary>True while the leader is stopped at a waypoint waiting for the player to catch up.</summary>
     public bool IsWaiting => CurrentState == LeaderState.Waiting;
+private IEnumerator SwitchSceneAfterStorm()
+{
+    yield return new WaitForSeconds(7f);
 
-    public void StartSandstorm()
+    SceneManager.LoadScene(2);
+}
+public void StartSandstorm()
+{
+    Debug.Log("THE STORM HAS BEGUN!");
+
+    isStormActive = true;
+
+    if (sandParticleSystem != null)
     {
-        Debug.Log("THE STORM HAS BEGUN!");
-
-        isStormActive = true;
-
-        if (sandParticleSystem != null)
-        {
-            sandParticleSystem.Play();
-        }
-
-        // Change skybox
-        if (sandstormSkybox != null)
-        {
-            RenderSettings.skybox = sandstormSkybox;
-            DynamicGI.UpdateEnvironment();
-            
-        }
+        sandParticleSystem.Play();
     }
+
+    // Change skybox
+    if (sandstormSkybox != null)
+    {
+        RenderSettings.skybox = sandstormSkybox;
+        DynamicGI.UpdateEnvironment();
+    }
+
+    // Start 5 second countdown
+    StartCoroutine(SwitchSceneAfterStorm());
+}
 
     void Start()
     {

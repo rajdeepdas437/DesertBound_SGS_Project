@@ -19,6 +19,8 @@ public class CaravanFollower : MonoBehaviour
     public Transform playerTransform;
     [Tooltip("UI Button that starts the dialogue — wire this in the Inspector, or leave empty and call StartTalking() from your own dialogue system.")]
     public Button talkButton;
+    public GameObject talkButton1;
+    public GameObject talks;
     [Tooltip("How long (seconds) the NPC stays in talking mode before returning to caravan movement.")]
     public float dialogueTime = 3f;
     [Tooltip("Degrees per second the NPC turns to face the player while talking.")]
@@ -32,7 +34,7 @@ public class CaravanFollower : MonoBehaviour
     private NavMeshAgent agent;
 
     private bool isTalking = false;
-    private float talkTimer = 0f;
+    private float talkTimer = 3f;
 
     private bool isWaiting = false;
 
@@ -47,10 +49,12 @@ public class CaravanFollower : MonoBehaviour
         agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
 
         // Wire the button automatically if one was assigned in the Inspector
+        talkButton = talkButton1.GetComponent<Button>();
         if (talkButton != null)
         {
             talkButton.onClick.AddListener(StartTalking);
         }
+        talks.SetActive(false);
     }
 
     void Update()
@@ -174,7 +178,8 @@ public class CaravanFollower : MonoBehaviour
 
         agent.isStopped = true;
         agent.ResetPath(); // clear current path so it doesn't resume mid-route unexpectedly
-
+        talkButton1.SetActive(false);
+        talks.SetActive(true);
         if (animator != null)
             animator.SetBool("is_walking", false);
     }
@@ -186,5 +191,7 @@ public class CaravanFollower : MonoBehaviour
     {
         isTalking = false;
         agent.isStopped = false;
+        talkButton1.SetActive(true);
+        talks.SetActive(false);
     }
 }
