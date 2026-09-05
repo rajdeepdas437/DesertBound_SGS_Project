@@ -18,6 +18,32 @@ public class CaravanLeaderPath : MonoBehaviour
 
     private NavMeshAgent agent;
     private bool stormTriggered = false;
+    [SerializeField] private ParticleSystem sandParticleSystem;
+
+    private bool isStormActive = false;
+    [Header("Sandstorm Skybox")]
+    [SerializeField] private Material sandstormSkybox;
+    private Material originalSkybox;
+
+    public void StartSandstorm()
+{
+    Debug.Log("THE STORM HAS BEGUN!");
+
+    isStormActive = true;
+
+    if (sandParticleSystem != null)
+    {
+        sandParticleSystem.Play();
+    }
+
+    // Change skybox
+    if (sandstormSkybox != null)
+    {
+        RenderSettings.skybox = sandstormSkybox;
+        DynamicGI.UpdateEnvironment();
+    }
+}
+
 
     void Start()
     {
@@ -25,6 +51,7 @@ public class CaravanLeaderPath : MonoBehaviour
         agent.speed = walkSpeed;
 
         SetNextDestination();
+        originalSkybox = RenderSettings.skybox;
     }
 
     void Update()
