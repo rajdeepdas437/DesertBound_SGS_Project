@@ -568,6 +568,10 @@ PrefabInstance:
       propertyPath: formationOffset.y
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -1580535799172915004, guid: 1ce937b39ea5e614eac6cc1e3a29a564, type: 3}
     - target: {fileID: 5181561111601737313, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: autoHandPlayer
       value: 
@@ -576,6 +580,10 @@ PrefabInstance:
       propertyPath: vrCameraTransform
       value: 
       objectReference: {fileID: 304902036}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fa95c354773c294d8266e39b797d138, type: 2}
     - target: {fileID: 7047487638915683950, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: m_Name
       value: HABIBI (2)
@@ -645,6 +653,10 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 458073147}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -1580535799172915004, guid: 1ce937b39ea5e614eac6cc1e3a29a564, type: 3}
     - target: {fileID: 4268240441700868785, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: m_BaseOffset
       value: 1
@@ -657,6 +669,10 @@ PrefabInstance:
       propertyPath: vrCameraTransform
       value: 
       objectReference: {fileID: 304902036}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fa95c354773c294d8266e39b797d138, type: 2}
     - target: {fileID: 7047487638915683950, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: m_Name
       value: caravan_leader
@@ -860,6 +876,10 @@ PrefabInstance:
       propertyPath: formationOffset.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -1580535799172915004, guid: 1ce937b39ea5e614eac6cc1e3a29a564, type: 3}
     - target: {fileID: 5181561111601737313, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: autoHandPlayer
       value: 
@@ -868,6 +888,18 @@ PrefabInstance:
       propertyPath: vrCameraTransform
       value: 
       objectReference: {fileID: 304902036}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fa95c354773c294d8266e39b797d138, type: 2}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8154691942724512073, guid: 1d0de420d1d158e42ab6339bec0926d3, type: 3}
     - target: {fileID: 7047487638915683950, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: m_Name
       value: HABIBI (7)
@@ -1316,6 +1348,10 @@ PrefabInstance:
       propertyPath: formationOffset.y
       value: -13
       objectReference: {fileID: 0}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -1580535799172915004, guid: 1ce937b39ea5e614eac6cc1e3a29a564, type: 3}
     - target: {fileID: 5181561111601737313, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: autoHandPlayer
       value: 
@@ -1324,6 +1360,10 @@ PrefabInstance:
       propertyPath: vrCameraTransform
       value: 
       objectReference: {fileID: 304902036}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a25d36443746b8c42854361f2c7bcd40, type: 2}
     - target: {fileID: 7047487638915683950, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: m_Name
       value: HABIBI (6)
@@ -1401,6 +1441,10 @@ PrefabInstance:
       propertyPath: formationOffset.y
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -1580535799172915004, guid: 1ce937b39ea5e614eac6cc1e3a29a564, type: 3}
     - target: {fileID: 5181561111601737313, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: autoHandPlayer
       value: 
@@ -1409,6 +1453,10 @@ PrefabInstance:
       propertyPath: vrCameraTransform
       value: 
       objectReference: {fileID: 304902036}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fa95c354773c294d8266e39b797d138, type: 2}
     - target: {fileID: 7047487638915683950, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: m_Name
       value: HABIBI (4)
@@ -1524,6 +1572,10 @@ PrefabInstance:
       propertyPath: formationOffset.x
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -1580535799172915004, guid: 1ce937b39ea5e614eac6cc1e3a29a564, type: 3}
     - target: {fileID: 5181561111601737313, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: autoHandPlayer
       value: 
@@ -1532,6 +1584,10 @@ PrefabInstance:
       propertyPath: vrCameraTransform
       value: 
       objectReference: {fileID: 304902036}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fa95c354773c294d8266e39b797d138, type: 2}
     - target: {fileID: 7047487638915683950, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: m_Name
       value: HABIBI (1)
@@ -1678,6 +1734,10 @@ PrefabInstance:
       propertyPath: formationOffset.y
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -1580535799172915004, guid: 1ce937b39ea5e614eac6cc1e3a29a564, type: 3}
     - target: {fileID: 5181561111601737313, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: autoHandPlayer
       value: 
@@ -1686,6 +1746,10 @@ PrefabInstance:
       propertyPath: vrCameraTransform
       value: 
       objectReference: {fileID: 304902036}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fa95c354773c294d8266e39b797d138, type: 2}
     - target: {fileID: 7047487638915683950, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: m_Name
       value: HABIBI (3)
@@ -1988,6 +2052,10 @@ PrefabInstance:
       propertyPath: formationOffset.y
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -1580535799172915004, guid: 1ce937b39ea5e614eac6cc1e3a29a564, type: 3}
     - target: {fileID: 5181561111601737313, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: autoHandPlayer
       value: 
@@ -1996,6 +2064,10 @@ PrefabInstance:
       propertyPath: vrCameraTransform
       value: 
       objectReference: {fileID: 304902036}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fa95c354773c294d8266e39b797d138, type: 2}
     - target: {fileID: 7047487638915683950, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: m_Name
       value: HABIBI (5)
@@ -2070,6 +2142,18 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 458073147}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -1580535799172915004, guid: 1ce937b39ea5e614eac6cc1e3a29a564, type: 3}
+    - target: {fileID: 3875932564249647310, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: -6478536213147159724, guid: 1d0de420d1d158e42ab6339bec0926d3, type: 3}
     - target: {fileID: 5181561111601737313, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: autoHandPlayer
       value: 
@@ -2078,6 +2162,10 @@ PrefabInstance:
       propertyPath: vrCameraTransform
       value: 
       objectReference: {fileID: 304902036}
+    - target: {fileID: 6465602271390253920, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a25d36443746b8c42854361f2c7bcd40, type: 2}
     - target: {fileID: 7047487638915683950, guid: 3cb33dc18ba6fcc4683ac35a80a430e6, type: 3}
       propertyPath: m_Name
       value: HABIBI
