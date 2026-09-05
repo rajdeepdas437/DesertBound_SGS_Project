@@ -7,6 +7,8 @@ public class CaravanFollower : MonoBehaviour
 {
     [Header("Leader to Follow")]
     public Transform leaderTransform;
+    [Tooltip("Reference to the leader's path script, used to detect when the caravan has stopped at a waypoint.")]
+    public CaravanLeaderPath leaderPath;
 
     [Header("Formation Offset")]
     [Tooltip("X = Right/Left distance relative to leader, Z = Behind/Ahead distance")]
@@ -22,11 +24,17 @@ public class CaravanFollower : MonoBehaviour
     [Tooltip("Degrees per second the NPC turns to face the player while talking.")]
     public float faceTurnSpeed = 360f;
 
+    [Header("Waiting State")]
+    [Tooltip("How close the player must get to the leader for the follower to leave its waiting state.")]
+    public float exitWaitRadius = 5f;
+
     public Animator animator;
     private NavMeshAgent agent;
 
     private bool isTalking = false;
     private float talkTimer = 0f;
+
+    private bool isWaiting = false;
 
     void Start()
     {
@@ -50,11 +58,23 @@ public class CaravanFollower : MonoBehaviour
         if (isTalking)
         {
             HandleTalking();
+            return;
         }
-        else
+
+        if (isWaiting)
         {
-            HandleCaravanMovement();
+            HandleWaitingState();
+            return;
         }
+
+        // Enter the waiting state as soon as the leader stops at a waypoint
+        if (leaderPath != null && leaderPath.IsWaiting)
+        {
+            EnterWaitingState();
+            return;
+        }
+
+        HandleCaravanMovement();
     }
 
     // ---------- Mode 1: Normal NavMesh caravan following ----------
@@ -100,6 +120,37 @@ public class CaravanFollower : MonoBehaviour
         {
             StopTalking();
         }
+    }
+
+    // ---------- Mode 3: Waiting mode (synced to the leader stopping at a waypoint) ----------
+    private void EnterWaitingState()
+    {
+        isWaiting = true;
+
+        agent.isStopped = true;
+        agent.ResetPath();
+
+        if (animator != null)
+            animator.SetBool("is_walking", false);
+    }
+
+    private void HandleWaitingState()
+    {
+        // The only way out of this state is the player getting close enough to the leader.
+        if (playerTransform == null || leaderTransform == null) return;
+
+        float distanceToLeader = Vector3.Distance(playerTransform.position, leaderTransform.position);
+        if (distanceToLeader <= exitWaitRadius)
+        {
+            ExitWaitingState();
+        }
+    }
+
+    private void ExitWaitingState()
+    {
+        isWaiting = false;
+        agent.isStopped = false;
+        // HandleCaravanMovement() will resume on the next Update() and re-enable is_walking.
     }
 
     /// <summary>
