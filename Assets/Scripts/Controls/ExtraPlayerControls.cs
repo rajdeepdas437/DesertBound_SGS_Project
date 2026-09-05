@@ -6,6 +6,8 @@ public class ExtraPlayerControls : MonoBehaviour
 {
     private Rigidbody rb;
     [SerializeField] float jumpForce = 5f;
+
+    InputAction openMap;
     
     void Start()
     {
@@ -37,5 +39,10 @@ public class ExtraPlayerControls : MonoBehaviour
         {
             AutoHandPlayer.Instance.Jump(jumpForce);
         }
+    }
+
+    private void OpenMap()
+    {
+        if()
     }
 }
