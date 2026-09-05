@@ -1,6 +1,4 @@
-using System.Numerics;
 using UnityEngine;
-using UnityEngine.Windows.Speech;
 
 public class SunController : MonoBehaviour
 {
@@ -9,16 +7,15 @@ public class SunController : MonoBehaviour
     [SerializeField] private Transform levelStart;
     [SerializeField] private Transform levelEnd;
 
-    [Header("Sun Offsets")]
-    [Tooltip("Sun position relative to player at 09:00 (East)")]
-    public float eastSunx = 500f;
-    [Tooltip("Sun position relative to player at 16:00 (West)")]
-    public float westSunx = -500f;
+    [Header("Sun Rotation")]
+    [Tooltip("Sun rotation angle at the start of the level")]
+    public float startAngle = 30f;
 
-    public float sunDistance = 509.9f;
+    [Tooltip("Sun rotation angle at the end of the level")]
+    public float endAngle = 120f;
 
     [Header("Sun")]
-    [SerializeField] private Transform sunSphere;
+    [SerializeField] private Transform sun;
 
     // Furthest progress the player has reached.
     // This prevents the sun from moving backwards.
@@ -29,7 +26,7 @@ public class SunController : MonoBehaviour
     {
         float currentProgress = GetPlayerProgress();
 
-        // Sun can only move EAST -> WEST.
+        // Sun can only move from START -> END.
         maxProgress = Mathf.Max(maxProgress, currentProgress);
 
         UpdateSun();
@@ -68,31 +65,18 @@ public class SunController : MonoBehaviour
 
     private void UpdateSun()
     {
-        // Calculate the angles of the East and West positions.
-        float eastAngle = Mathf.Atan2(
-            Mathf.Sqrt(sunDistance * sunDistance - eastSunx * eastSunx),
-            eastSunx
-        );
-
-        float westAngle = Mathf.Atan2(
-            Mathf.Sqrt(sunDistance * sunDistance - westSunx * westSunx),
-            westSunx
-        );
-
-        // Linearly interpolate the ANGLE, not X/Y.
+        // Linearly interpolate between the start and end angles.
         float currentAngle = Mathf.Lerp(
-            eastAngle,
-            westAngle,
+            startAngle,
+            endAngle,
             maxProgress
         );
 
-        // Convert angle back into X/Y coordinates.
-        float x = Mathf.Cos(currentAngle) * sunDistance;
-        float y = Mathf.Sin(currentAngle) * sunDistance;
-
-        UnityEngine.Vector3 sunOffset = new UnityEngine.Vector3(x, y, 0f);
-
-        // Position relative to player.
-        sunSphere.position = player.position + sunOffset;
+        // Set the directional light's X rotation.
+        sun.rotation = Quaternion.Euler(
+            currentAngle,
+            sun.rotation.eulerAngles.y,
+            sun.rotation.eulerAngles.z
+        );
     }
 }
