@@ -136,11 +136,22 @@ public class CaravanFollower : MonoBehaviour
 
     private void HandleWaitingState()
     {
-        // The only way out of this state is the player getting close enough to the leader.
-        if (playerTransform == null || leaderTransform == null) return;
+        // Primary release condition: the player got close enough to the leader.
+        if (playerTransform != null && leaderTransform != null)
+        {
+            float distanceToLeader = Vector3.Distance(playerTransform.position, leaderTransform.position);
+            if (distanceToLeader <= exitWaitRadius)
+            {
+                ExitWaitingState();
+                return;
+            }
+        }
 
-        float distanceToLeader = Vector3.Distance(playerTransform.position, leaderTransform.position);
-        if (distanceToLeader <= exitWaitRadius)
+        // Fallback release condition: the leader itself has already resumed moving
+        // (its own, larger wait radius triggered first). Without this check the
+        // follower can get stuck forever if the player never closes to within
+        // exitWaitRadius before the leader walks off toward the next waypoint.
+        if (leaderPath != null && !leaderPath.IsWaiting)
         {
             ExitWaitingState();
         }

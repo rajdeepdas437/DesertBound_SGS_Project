@@ -59,6 +59,7 @@ public class CaravanLeaderPath : MonoBehaviour
         {
             RenderSettings.skybox = sandstormSkybox;
             DynamicGI.UpdateEnvironment();
+            
         }
     }
 
