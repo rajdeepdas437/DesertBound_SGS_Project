@@ -12,7 +12,7 @@ public class NPCInteraction : MonoBehaviour
     [Tooltip("Optional: Will automatically find AutoHandPlayer if left empty")]
     [SerializeField] private AutoHandPlayer autoHandPlayer;
 
-    private bool isPlayerInRadius = false;
+    public bool isPlayerInRadius = false;
 
     private void Start()
     {

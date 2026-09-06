@@ -32,9 +32,10 @@ public class CaravanFollower : MonoBehaviour
 
     public Animator animator;
     private NavMeshAgent agent;
+    public NPCInteraction npcbox;
 
     private bool isTalking = false;
-    private float talkTimer = 3f;
+    private float talkTimer = 5f;
 
     private bool isWaiting = false;
 
@@ -55,10 +56,23 @@ public class CaravanFollower : MonoBehaviour
             talkButton.onClick.AddListener(StartTalking);
         }
         talks.SetActive(false);
+        npcbox = GetComponentInChildren<NPCInteraction>();
     }
 
     void Update()
     {
+        if(Input.GetKey(KeyCode.G) && npcbox.isPlayerInRadius)
+        {
+            isTalking = true;
+            talkTimer = dialogueTime;
+
+            agent.isStopped = true;
+            agent.ResetPath(); // clear current path so it doesn't resume mid-route unexpectedly
+            talkButton1.SetActive(false);
+            talks.SetActive(true);
+        }
+        if (animator != null)
+            animator.SetBool("is_walking", false);
         if (isTalking)
         {
             HandleTalking();
