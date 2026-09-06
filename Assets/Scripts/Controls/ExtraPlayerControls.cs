@@ -8,10 +8,14 @@ public class ExtraPlayerControls : MonoBehaviour
     [SerializeField] float jumpForce = 5f;
 
     InputAction openMap;
+    [SerializeField] GameObject map;
+    private bool isMapOpen;
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        openMap = InputSystem.actions.FindAction("Map");
+        isMapOpen=false;
     }
 
     
@@ -19,6 +23,7 @@ public class ExtraPlayerControls : MonoBehaviour
     {
         JumpTrigger();
         Run();
+        OpenMap();
     }
 
     private static void Run()
@@ -43,6 +48,18 @@ public class ExtraPlayerControls : MonoBehaviour
 
     private void OpenMap()
     {
-        if()
+        if(openMap.WasPressedThisFrame())
+        {
+            if(!isMapOpen)
+            {
+                map.SetActive(true);
+                isMapOpen=true;
+            }
+            else
+            {
+                map.SetActive(false);
+                isMapOpen=false;
+            }
+        }
     }
 }
